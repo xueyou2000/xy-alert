@@ -1,7 +1,27 @@
 [
     {
         "name": "Simple",
-        "title": "简答例子",
-        "desc": "简答例子的一段描述。"
+        "title": "简单例子",
+        "desc": "最简单的用法，适用于简短的警告提示。"
+    },
+    {
+        "name": "Type",
+        "title": "不同类型",
+        "desc": "共有四种样式类型 success、info、warning、error。"
+    },
+    {
+        "name": "Closable",
+        "title": "可关闭",
+        "desc": "显示关闭按钮，点击可关闭警告提示。"
+    },
+    {
+        "name": "Icon",
+        "title": "显示图标",
+        "desc": "可口的图标让信息类型更加醒目。"
+    },
+    {
+        "name": "Banner",
+        "title": "横幅模式",
+        "desc": "设置 banner 属性启用横幅模式，此模式下没有四周圆角。"
     }
 ]

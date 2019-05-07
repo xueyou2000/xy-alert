@@ -1,10 +1,11 @@
 import React from "react";
-import Hello from "../src";
+import Alert from "../src";
+import "./index.scss";
 
 export default function() {
     return (
-        <div>
-            <Hello className="my-hello" />
+        <div className="alert-demo">
+            <Alert message="基本用法" />
         </div>
     );
 }

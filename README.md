@@ -10,37 +10,43 @@
 
 # xy-alert
 
-基于`React Hooks` + `typescript`的基础组件
+警告提示组件
 
 ## 安装
 
 ```bash
 # yarn
-yarn add xy-alert
+yarn add xy-alert classnames utils-hooks @fortawesome/react-fontawesome @fortawesome/free-solid-svg-icons
 ```
 
 ## 使用例子
 
-```ts
+```tsx
 import React from "react";
 import ReactDOM from "react-dom";
-import XyAlert from "xy-alert";
-ReactDOM.render(<XyAlert />, container);
+import Alert from "xy-alert";
+ReactDOM.render(
+    <Alert message="登录失败" type="error" showIcon={true}>
+        账号或密码错误。
+    </Alert>,
+    container
+);
 ```
 
 ## API
 
-| 属性     | 说明                                                               | 类型           | 默认值    |
-| -------- | ------------------------------------------------------------------ | -------------- | --------- |
-| ghost    | 幽灵属性，使按钮背景透明                                           | boolean        | false     |
-| long     | 是否长按钮                                                         | boolean        | false     |
-| icon     | 设置按钮的图标类型                                                 | IconDefinition | -         |
-| loading  | 设置按钮载入状态                                                   | boolean        | `false`   |
-| disabled | 按钮失效状态                                                       | boolean        | `false`   |
-| shape    | 设置按钮形状，可选值为 `circle` 或者不设                           | string         | -         |
-| size     | 设置按钮大小，可选值为 `small` `large` 或者不设                    | string         | `default` |
-| type     | 设置按钮类型，可选值为 `primary` `dashed` `text` `danger` 或者不设 | string         | -         |
-| onClick  | `click` 事件的 handler                                             | function       | -         |
+| 属性           | 说明                                                                 | 类型                       | 默认值 |
+| -------------- | -------------------------------------------------------------------- | -------------------------- | ------ |
+| visible        | 是否显示                                                             | boolean                    | true   |
+| defaultVisible | 默认是否显示                                                         | boolean                    | -      |
+| 提示文本       | message                                                              | React.ReactNode            | -      |
+| children       | 提示说明                                                             | React.ReactNode            | -      |
+| closable       | 是否可以关闭                                                         | boolean                    | false  |
+| closeText      | 自定义关闭按钮                                                       | React.ReactNode            | -      |
+| showIcon       | 是否显示图标                                                         | boolean                    | false  |
+| banner         | 横幅模式                                                             | boolean                    | false  |
+| type           | 警告提示的样式，可选值为 `success` `info` `warning` `error` 或者不设 | string                     | info   |
+| onClose        | 关闭事件                                                             | (visible: boolean) => void | -      |
 
 ## 开发
 
