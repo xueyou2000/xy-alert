@@ -22,8 +22,10 @@ export function Alert(props: AlertProps) {
     const classString = classNames(prefixCls, className, `${prefixCls}-type-${type}`, {
         [`${prefixCls}-witch-description`]: !!children,
         [`${prefixCls}-banner`]: banner,
-        [`${prefixCls}-hidden`]: !visible
+        [`${prefixCls}-hidden`]: !visible,
     });
+
+    console.log("重新渲染", visible);
 
     function renderIcon() {
         if (showIcon) {
