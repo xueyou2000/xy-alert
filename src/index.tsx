@@ -2,7 +2,7 @@ import { faCheckCircle, faInfoCircle, faTimesCircle } from "@fortawesome/free-so
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 import React from "react";
-import { useControll } from "utils-hooks";
+import { useControll, useTranstion } from "utils-hooks";
 import { AlertProps, AlertType } from "./interface";
 
 function getIcon(type: AlertType) {
@@ -19,13 +19,13 @@ function getIcon(type: AlertType) {
 export function Alert(props: AlertProps) {
     const { prefixCls = "xy-alert", className, style, children, message, banner, type = "info", closable, closeText, showIcon, onClose } = props;
     const [visible, setVisible, isControll] = useControll<boolean>(props, "visible", "defaultVisible", true);
-    const classString = classNames(prefixCls, className, `${prefixCls}-type-${type}`, {
+    const [ref, state] = useTranstion(visible, true);
+    const opening = state.indexOf("en") !== -1;
+    const classString = classNames(prefixCls, className, `${prefixCls}-type-${type}`, `${prefixCls}-state-${state}`, {
         [`${prefixCls}-witch-description`]: !!children,
         [`${prefixCls}-banner`]: banner,
-        [`${prefixCls}-hidden`]: !visible,
+        [`${prefixCls}-open`]: opening
     });
-
-    console.log("重新渲染", visible);
 
     function renderIcon() {
         if (showIcon) {
@@ -49,7 +49,7 @@ export function Alert(props: AlertProps) {
     }
 
     return (
-        <div className={classString} style={style}>
+        <div className={classString} style={style} ref={ref}>
             {renderIcon()}
             <div className={`${prefixCls}-content`}>
                 <p className={`${prefixCls}-message`}>{message}</p>

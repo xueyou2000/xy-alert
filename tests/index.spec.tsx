@@ -18,7 +18,8 @@ describe("Alert", () => {
         fireEvent.click(close);
 
         const alert = wrapper.container.querySelector(".xy-alert");
-        expect(alert.classList.contains("xy-alert-hidden")).toBeTruthy();
+        fireEvent.animationEnd(alert);
+        expect(alert.classList.contains("xy-alert-state-exited")).toBeTruthy();
         expect(fn).toBeCalled();
     });
 
