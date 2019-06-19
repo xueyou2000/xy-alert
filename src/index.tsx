@@ -19,7 +19,7 @@ function getIcon(type: AlertType) {
 export function Alert(props: AlertProps) {
     const { prefixCls = "xy-alert", className, style, children, message, banner, type = "info", closable, closeText, showIcon, onClose } = props;
     const [visible, setVisible, isControll] = useControll<boolean>(props, "visible", "defaultVisible", true);
-    const [ref, state] = useTranstion(visible, true);
+    const [ref, state] = useTranstion(visible, false);
     const opening = state.indexOf("en") !== -1;
     const classString = classNames(prefixCls, className, `${prefixCls}-type-${type}`, `${prefixCls}-state-${state}`, {
         [`${prefixCls}-witch-description`]: !!children,
